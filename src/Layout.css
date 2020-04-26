@@ -1,0 +1,29 @@
+.gridContainer {
+    
+    display: grid;
+    height: 100vh;
+    width: 100vw;
+    
+    grid-template-columns: 1fr;
+    grid-template-rows: 50px 1fr;
+    background-color: #C0C0C0;
+
+}
+.page {
+
+    display : grid;
+    grid-row: 2/3;
+    grid-template-columns: 200px 1fr;
+
+}
+
+.aSide {
+
+    grid-column-start: 1;
+    grid-column-end: 1;
+    
+}
+
+.subPage {
+    grid-column: 2 / 3;
+}

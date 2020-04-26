@@ -1,0 +1,36 @@
+.asideNavBar {
+    
+    /* para poder salvar el gap entre header y sidebar */
+
+    /* para salvar el pading top que le pusimos al layout */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: Roboto, sans-serif;
+    background-color: #2f2f2f;
+    color: rgba(255, 255, 255, 0.75);
+    padding: 12px;
+    
+
+
+}
+
+.asideNavBar__navLink {
+    
+    color: rgba(255, 255, 255, 0.75);
+    text-decoration: none;
+    padding: 8px 0px;
+    display:flex;
+    align-items: center;
+    justify-content: start;
+    width: 90%;
+    font-size: 1em;
+    
+}
+
+.asideNavBar__navLink .material-icons {
+    
+    font-size: 1.5em;
+    padding-right: 8px;
+
+}

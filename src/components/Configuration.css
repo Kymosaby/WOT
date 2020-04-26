@@ -1,0 +1,26 @@
+.configurationsContainer {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+
+.userName, .profile, .configuration {
+    
+    /* truquito para centrar texto dentro de contenedores */
+    line-height: 50px;
+    height: 50px;
+    /*  */
+    font-size: 32px;
+    
+    padding: 0px 8px;
+    text-decoration: none;
+    color: rgba(255, 255, 255, .75);
+    
+}
+
+.userName {
+    display: block;
+    font-size: 18px; 
+    color: rgba(255, 255, 255, .5);
+}
