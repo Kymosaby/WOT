@@ -13,6 +13,7 @@ const userReducer = (state = INITIAL_STATE, action) => {
                 ...state,
                 nickName : action.payload
             }
+    
         default: return state
     }
     

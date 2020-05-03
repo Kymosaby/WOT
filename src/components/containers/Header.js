@@ -7,16 +7,8 @@ import * as UserActions from "../../redux/actions/actionCreators/userActions"
 import "./Header.css"
 
 class Header extends React.Component {
-    constructor (props){
-        super(props)
-    }
-
-    componentDidMount() {
-        console.log(this.props.nickName)
-        console.log(this.props)
-        this.props.actions.getUser();
-        console.log(this.props.nickName)
-    }
+    
+    componentDidMount() {this.props.actions.getUser();}
     
     render() {
         return (

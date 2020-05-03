@@ -5,106 +5,161 @@ const api = {
             "From",
             "Subject",
             "Receiver",
-            "start-Date",
-            "Hits"
+            "Start Date",
+            "Scope",
+            "Hits",
         ],
-
-        "categories" : {
-            "Date" : [
-                "Today",
-                "Yesterday",
+        "groups" : {
+            "date" : [
+                "today",
+                "yesterday",
+                "olders"
             ],
         },
-            
-        "requests" : [
-            {
-                "ID" : "#123784",
-                "From": "manuel_ibar@bp.com",
-                "Subject" : "Pasame la mayonesa",
-                "Receiver" : "manuel_ibar@accenture.com",
-                "start-Date": "2019-24-08",
-                "Hits" : 3,
-                "category" : "Yesterday"
-            },
-            {
-                "ID" : "#112389",
-                "From": "manuel.ibar@hotmail.com",
-                "Subject" : "dentro del contexto de la funcion",
-                "Receiver" : "ever.rivero@gmail.com",
-                "start-Date": "2019-24-08",
-                "Hits" : 8,
-                "category" : "Yesterday"            
-            },
-            {
-                "ID" : "#111123",
-                "From": "esteban.morales@yahoo.com.ar",
-                "Subject" : "crear tus propios tipos de datos",
-                "Receiver" : "peruanenzo@bp.com",
-                "start-Date": "2019-24-08",
-                "Hits" : 0,
-                "category" : "Yesterday"   
-            },
-            {
-                "ID" : "#1123322",
-                "From": "manuel_ibar@hotmail.com",
-                "Subject" : "le quiero poner la llave",
-                "Receiver" : "tortmundo@shell.com",
-                "start-Date": "2019-24-08",
-                "Hits" : 1, 
-                "category" : "Today"   
-            },
-            {
-                "ID" : "#552413",
-                "From": "bjorn@naguili.res",
-                "Subject" : "Const F = y el equis",
-                "Receiver" : "manolito@outlook.com",
-                "start-Date": "2019-24-08",
-                "Hits" : 0,
-                "category" : "Today"   
-            },
-            {
-                "ID" : "11122233" ,
-                "From": "pura@css.com",
-                "Subject" : "mas facil de reutilizar",
-                "Receiver" : "feo@queka.com",
-                "start-Date": "2019-24-08",
-                "Hits" : 3,
-                "category" : "Today"   
-            },
-            {
-                "ID" : "#444536",
-                "From": "condicional@yahoo.com",
-                "Subject" : "return dos mas dos",
-                "Receiver" : "else@gmail.com",
-                "start-Date": "2019-24-08",
-                "Hits" : 12,
-                "category" : "Yesterday"   
-            },
-            {
-                
-            },
+        "filters" : [
+            "Team",
+            "Date",
+            "WorkGroup"
         ],
-        "standBy": [
+        "requests" : [
+            // {
+            //     "ID" : "123784",
+            //     "type" : "unassigned",
+            //     "from": "manuel_ibar@bp.com",
+            //     "subject" : "Pasame la mayonesa",
+            //     "receiver" : "manuel_ibar@accenture.com",
+            //     "startDate": "2019-24-08",
+            //     "hits" : 3,
+            //     "scope" : "GT1",
+            //     "state" : "onTime",
+            //     "groups" : {
+            //         "date" : "today"
+            //     },
+            //     "workGroup": "BP",
+            // },
+            // {
+            //     "ID" : "112389",
+            //     "type" : "unassigned",
+            //     "from": "manuel.ibar@hotmail.com",
+            //     "subject" : "dentro del contexto de la funcion",
+            //     "receiver" : "ever.rivero@gmail.com",
+            //     "startDate": "2019-24-08",
+            //     "hits" : 8,
+            //     "scope" : "GT1",
+            //     "state" : "onTime",
+            //     "groups" : {
+            //         "date" : "today"
+            //     },
+            //     "workGroup": "BP",
+            // },
+            // {
+            //     "ID" : "111123",
+            //     "type" : "unassigned",
+            //     "from": "esteban.morales@yahoo.com.ar",
+            //     "subject" : "crear tus propios tipos de datos",
+            //     "receiver" : "peruanenzo@bp.com",
+            //     "startDate": "2019-24-08",
+            //     "hits" : 0,
+            //     "scope" : "GT1",
+            //     "state" : "overdue",
+            //     "groups" : {
+            //         "date" : "today"
+            //     },
+            //     "workGroup": "BP",
+            // },
+            // {
+            //     "ID" : "1123322",
+            //     "type" : "unassigned",
+            //     "from": "manuel_ibar@hotmail.com",
+            //     "subject" : "le quiero poner la llave",
+            //     "receiver" : "tortmundo@shell.com",
+            //     "startDate": "2019-24-08",
+            //     "hits" : 1, 
+            //     "scope" : "WOT",
+            //     "state" : "onTime" ,
+            //     "groups" : {
+            //         "date" : "yesterday"
+            //     },
+            //     "workGroup": "BP",
+            // },
+            // {
+            //     "ID" : "552413",
+            //     "type" : "unassigned",
+            //     "from": "bjorn@naguili.res",
+            //     "subject" : "Const F = y el equis",
+            //     "receiver" : "manolito@outlook.com",
+            //     "startDate": "2019-24-08",
+            //     "hits" : 0,
+            //     "scope" : "WOT",
+            //     "state" : "overdue" ,
+            //     "groups" : {
+            //         "date" : "olders"
+            //     },
+            //     "workGroup": "BP",
+            // },
+            // {
+            //     "ID" : "11122233",
+            //     "type" : "unassigned",
+            //     "from": "pura@css.com",
+            //     "subject" : "mas facil de reutilizar",
+            //     "receiver" : "feo@queka.com",
+            //     "startDate": "2019-24-08",
+            //     "hits" : 3,
+            //     "scope" : "GT1",
+            //     "state" : "onTime",
+            //     "groups" : {
+            //         "date" : "yesterday"
+            //     },
+            //     "workGroup": "BP",
+            // },
             {
-                "ID" : "#3332123",
-                "From": "libreria@yahoo.com",
-                "Subject" : "apurate neneeee",
-                "Receiver" : "global@gmail.com",
-                "start-Date": "2019-24-08",
-                "Hits" : 39,
+                "ID" : "40536",
+                "type" : "unassigned",
+                "from": "condicional@yahoo.com",
+                "subject" : "return dos mas dos",
+                "receiver" : "else@gmail.com",
+                "startDate": "2019-24-08",
+                "hits" : 12,
+                "scope" : "GT1",
+                "state" : "onTime",
+                "groups" : {
+                    "date" : "today"
+                },
+                "workGroup": "BP",
             },
             {
-                "ID" : "#442222536",
-                "From": "solucionar@yahoo.com",
-                "Subject" : "funciones de la lubrearia",
-                "Receiver" : "else@outlook.com",
-                "start-Date": "2019-24-08",
-                "Hits" : 2,   
+                "ID" : "3332123",
+                "from": "libreria@yahoo.com",
+                "subject" : "apurate neneeee",
+                "receiver" : "global@gmail.com",
+                "startDate": "2019-24-08",
+                "hits" : 39,
+                "scope" : "WOT",
+                "state" : "standBy",
+                "groups" : {
+                    "date" : "today"
+                },
+                "workGroup": "BP",
+            },
+            {
+                "ID" : "442222536",
+                "from": "solucionar@yahoo.com",
+                "subject" : "funciones de la lubrearia",
+                "receiver" : "else@outlook.com",
+                "startDate": "2019-24-08",
+                "hits" : 2,   
+                "scope" : "GT1",
+                "state" : "standBy",
+                "groups" : {
+                    "date" : "today"
+                },
+                "workGroup": "BP",
             }
         ]
     },
     "User" : {
         "nickName" : "Manu"
-    }
+    },
+
 }
 export default api;

@@ -1,37 +1,30 @@
 import * as ReqType from '../actions/actionTypes/requestsTypes'
 
 const INITIAL_STATE = {
-    requests: [],
-    queueGroups: [],
-    queueSchema: [],
-    standByQueue: []
+    unassignedRequests: [],
+    standByRequests : [],
+    requestSchema: []
 };
 
 const requestsReducer = ( state = INITIAL_STATE, action ) => {
     switch ( action.type ) {
-        case ReqType.GET_REQUEST_LIST:
+        case ReqType.GET_UNASSIGNED_REQUESTS:
             return { 
                 ...state, 
-                requests: action.payload.requestList
+                unassignedRequests: [...action.payload]
             }
-        case ReqType.GET_QUEUE_GROUP_LIST:
+        case ReqType.GET_STANDBY_REQUESTS:
             return {
                 ...state,
-                queueGroups : action.payload.queueGroups
+                standByRequests : [...action.payload]
             }
-        case ReqType.GET_QUEUE_SCHEMA:
+        case ReqType.GET_REQUEST_SCHEMA:
             return {
                 ...state,
-                queueSchema : action.payload.queueSchema
-            }
-        case ReqType.GET_STAND_BY_LIST:
-            return {
-                ...state,
-                standByQueue : action.payload.standByQueue
+                requestSchema : [...action.payload]
             }
             
-            default: return state;
-            
+        default: return state;
     }
 }
 

@@ -1,20 +1,19 @@
 import React from "react"
 import QueueTools from "../../components/QueueTools"
-import QueueFilterSection from "../../components/QueueFilterSection"
+import QueueTags from "../QueueTags"
 import QueueContent from "../containers/QueueContent"
 import StandBy from "../../components/containers/StandByQueue"
 import "./Queue.css"
 
-export default function Queue () {
+export default function Queue() {
 
     return (
         <div className = "queue">
-            <QueueFilterSection />
+            <QueueTags />
             <QueueTools />
             <QueueContent />
-            <StandBy/>
+            <StandBy />
         </div>
-
     )
     
 }

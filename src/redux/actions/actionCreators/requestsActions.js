@@ -1,46 +1,33 @@
-import * as ReqType from "../types/requestsTypes"
+import * as ReqType from "../actionTypes/requestsTypes"
 import api from "../../../FakeAPI"
+import System from "../../../System"
 
+let requestNameSpace = System.schema.request
 
-export const getAllRequests = () => {
-    
-    let requestList = api.Requests.requests 
+export const  getUnassignedRequests= () => {
     
     return({
-        type: ReqType.GET_REQUEST_LIST,
-        payload: requestList
-    })
-}
-
-export const getAllQueueGroups = () => {
-
-    let queueGroups = api.Requests.categories
-
-    return({
-        type: ReqType.GET_QUEUE_GROUP_LIST,
-        payload: queueGroups
-    })
-    
-}
-
-export const getQueueSchema = () => {
-
-    let queueSchema = api.Requests.schema
-
-    return({
-        type: ReqType.GET_QUEUE_SCHEMA,
-        payload: queueSchema
+        type: ReqType.GET_UNASSIGNED_REQUESTS,
+        payload: api.Requests.requests.filter( req => req.type === requestNameSpace.type.unassigned )
     })
 
 }
 
-export const getStandByQueue = () => {
-
-    let standByQueue = api.Requests.standBy
+export const getStandByRequests = () => {
 
     return({
-        type: ReqType.GET_STAND_BY_LIST,
-        payload: standByQueue
+        type: ReqType.GET_STANDBY_REQUESTS,
+        payload: api.Requests.requests.filter( req => req.type === requestNameSpace.type.unassigned ).filter( req => req.state == requestNameSpace.state.standBy)
     })
     
 }
+
+export const getRequestSchema = () => {
+
+    return({
+        type: ReqType.GET_REQUEST_SCHEMA,
+        payload: api.Requests.schema
+    })
+
+}
+

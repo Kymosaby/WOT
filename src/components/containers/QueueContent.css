@@ -1,0 +1,12 @@
+
+.queueHeader {
+    height: 50px;
+    display: flex;
+    justify-content: space-evenly;
+ 
+}
+
+.groupTittle {
+    display: flex;
+    justify-content: space-between;   
+}
