@@ -1,13 +1,13 @@
 const api = {
     "Requests" : {
         "schema" : [
-            "ID",
-            "From",
-            "Subject",
-            "Receiver",
-            "Start Date",
-            "Scope",
-            "Hits",
+            "id",
+            "from",
+            "subject",
+            "receiver",
+            "start Date",
+            "scope",
+            "hits",
         ],
         "groups" : {
             "date" : [
@@ -17,13 +17,13 @@ const api = {
             ],
         },
         "filters" : [
-            "Team",
-            "Date",
-            "WorkGroup"
+            "team",
+            "date",
+            "workGroup"
         ],
         "requests" : [
             // {
-            //     "ID" : "123784",
+            //     "id" : "123784",
             //     "type" : "unassigned",
             //     "from": "manuel_ibar@bp.com",
             //     "subject" : "Pasame la mayonesa",
@@ -38,7 +38,7 @@ const api = {
             //     "workGroup": "BP",
             // },
             // {
-            //     "ID" : "112389",
+            //     "id" : "112389",
             //     "type" : "unassigned",
             //     "from": "manuel.ibar@hotmail.com",
             //     "subject" : "dentro del contexto de la funcion",
@@ -53,7 +53,7 @@ const api = {
             //     "workGroup": "BP",
             // },
             // {
-            //     "ID" : "111123",
+            //     "id" : "111123",
             //     "type" : "unassigned",
             //     "from": "esteban.morales@yahoo.com.ar",
             //     "subject" : "crear tus propios tipos de datos",
@@ -68,7 +68,7 @@ const api = {
             //     "workGroup": "BP",
             // },
             // {
-            //     "ID" : "1123322",
+            //     "id" : "1123322",
             //     "type" : "unassigned",
             //     "from": "manuel_ibar@hotmail.com",
             //     "subject" : "le quiero poner la llave",
@@ -83,7 +83,7 @@ const api = {
             //     "workGroup": "BP",
             // },
             // {
-            //     "ID" : "552413",
+            //     "id" : "552413",
             //     "type" : "unassigned",
             //     "from": "bjorn@naguili.res",
             //     "subject" : "Const F = y el equis",
@@ -98,7 +98,7 @@ const api = {
             //     "workGroup": "BP",
             // },
             // {
-            //     "ID" : "11122233",
+            //     "id" : "11122233",
             //     "type" : "unassigned",
             //     "from": "pura@css.com",
             //     "subject" : "mas facil de reutilizar",
@@ -113,7 +113,7 @@ const api = {
             //     "workGroup": "BP",
             // },
             {
-                "ID" : "40536",
+                "id" : "40536",
                 "type" : "unassigned",
                 "from": "condicional@yahoo.com",
                 "subject" : "return dos mas dos",
@@ -128,7 +128,8 @@ const api = {
                 "workGroup": "BP",
             },
             {
-                "ID" : "3332123",
+                "id" : "3333",
+                "type" : "unassigned",
                 "from": "libreria@yahoo.com",
                 "subject" : "apurate neneeee",
                 "receiver" : "global@gmail.com",
@@ -142,7 +143,8 @@ const api = {
                 "workGroup": "BP",
             },
             {
-                "ID" : "442222536",
+                "id" : "44236",
+                "type" : "unassigned",
                 "from": "solucionar@yahoo.com",
                 "subject" : "funciones de la lubrearia",
                 "receiver" : "else@outlook.com",

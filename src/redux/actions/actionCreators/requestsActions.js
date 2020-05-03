@@ -8,7 +8,7 @@ export const  getUnassignedRequests= () => {
     
     return({
         type: ReqType.GET_UNASSIGNED_REQUESTS,
-        payload: api.Requests.requests.filter( req => req.type === requestNameSpace.type.unassigned )
+        payload: api.Requests.requests.filter( req => req.type === requestNameSpace.type.unassigned && req.state !== requestNameSpace.state.standBy )
     })
 
 }
@@ -17,7 +17,7 @@ export const getStandByRequests = () => {
 
     return({
         type: ReqType.GET_STANDBY_REQUESTS,
-        payload: api.Requests.requests.filter( req => req.type === requestNameSpace.type.unassigned ).filter( req => req.state == requestNameSpace.state.standBy)
+        payload: api.Requests.requests.filter( req => req.type === requestNameSpace.type.unassigned ).filter( req => req.state === requestNameSpace.state.standBy)
     })
     
 }

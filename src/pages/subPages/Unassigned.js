@@ -1,6 +1,6 @@
 
 import React from "react"
-import Queue from "../../components/containers/Queue.js"
+import Queue from "../../components/Queue/containers/dummy/Queue"
 import Focus from "../../components/containers/Focus.js"
 import "./Unassigned.css"
 

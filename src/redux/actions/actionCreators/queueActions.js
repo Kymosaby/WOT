@@ -1,6 +1,5 @@
 import * as QueueType from "../actionTypes/queueTypes"
 import api from "../../../FakeAPI"
-import moment from "moment"
 
 export const getQueueGroups = () => {
     return({
