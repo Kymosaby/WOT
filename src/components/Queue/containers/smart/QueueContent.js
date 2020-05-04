@@ -31,17 +31,16 @@ class QueueContent extends React.Component {
     render() {       
         return (
             this.props.queueGroups[this.props.activeGroupCategory]?
-                <React.Fragment>
+                <div className = "queueContent">
                     {this.props.queueGroups[this.props.activeGroupCategory].map( group => {
                         return (
-                            <QueueGroup 
+                            <QueueGroup
                                 items = {this.props.unassignedRequests.filter( item => item.groups[this.props.activeGroupCategory] === group)} 
                                 groupName = {group}
                             />
                         )
                     })} 
-                    
-                </React.Fragment> 
+                </div> 
             : false
         ) 
     }

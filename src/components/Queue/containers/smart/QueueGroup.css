@@ -1,0 +1,15 @@
+.group{
+
+}
+
+.group__tittle{
+    display: flex;
+    justify-content: space-between;   
+}
+
+.group__items {
+
+}
+
+
+

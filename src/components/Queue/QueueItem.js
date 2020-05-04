@@ -1,5 +1,5 @@
 import React from 'react';
-import "./QueueRequest.css"
+import "./QueueItem.css"
 
 const QueueItem = (props) => {
     
@@ -10,19 +10,21 @@ const QueueItem = (props) => {
     }
 
     return ( 
-        <li className="requestItem">
+        <li className="item">
             <input id="pin" type="checkbox"/>
             <label for="pin" className= "pin--off material-icons"> label_important</label>
-            <div className="id">{itemSchema.id}</div>
-            <div className="senderInfo">
-                <p className="senderInfo__subject">{itemSchema.subject}</p>
-                <p className="senderInfo__from">{itemSchema.from}</p>
-                <span  className="senderInfo__sender">
-                    <i>TeamIcon</i>
-                    <p>{itemSchema.workGroup}</p>
+            <div className = "id">{itemSchema.id}</div>
+            <div className="source">
+                <p className="source__topic">{itemSchema.subject}</p>
+                <span className ="source__details">
+                    <p className="details__contact">{itemSchema.from}</p>
+                    <span  className="details__workGroup">
+                        <i className = "workgroup__icon material-icons">work</i>
+                        <p className = "workgroup__description">{itemSchema.workGroup}</p>
+                    </span>
                 </span>
             </div>
-            <div className = "otherInfo">
+            <div className = "other">
                 <p>{itemSchema.startDate}</p>
                 <p>{itemSchema.receiver}</p>
                 <span>
