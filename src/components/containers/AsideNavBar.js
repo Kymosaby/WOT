@@ -6,41 +6,42 @@ class AsideNavBar extends React.Component {
     
     render (){
         return(
-            <div className="asideNavBar aSide">
+            <div className="asideNavBar page__aside"> 
                 <NavLink 
                     activeStyle={{color:"red"}} 
                     to="/requests/dashboard" 
-                    className="asideNavBar__navLink dashboard">
+                    className="asideNavBar__navLink dashboard"
+                >
                     
                     <span className="material-icons">show_chart</span> 
-                    Dashboard
+                    <p>Dashboard</p>
 
                 </NavLink>
                 <NavLink 
-                    activeStyle={{color:"red"}} 
+                    activeStyle={{color:"red"}}
                     to="/requests/unassigned" 
-                    className="asideNavBar__navLink unassigned">
-
+                    className="asideNavBar__navLink unassigned"
+                >
                     <span className="material-icons">assignment</span>
-                    Unassigned
+                    <p>Unassigned</p>
 
                 </NavLink>
                 <NavLink 
-                    activeStyle={{color:"red"}} 
+                    activeStyle={{color:"red"}}
                     to="/requests/assigned" 
-                    className="asideNavBar__navLink assigned">
-                    
+                    className="asideNavBar__navLink assigned"
+                >   
                     <span className="material-icons">assignment_ind</span>
-                    Assigned
+                    <p>Assigned</p>
 
                 </NavLink>   
                 <NavLink 
-                    activeStyle={{color:"red"}} 
+                    activeStyle={{color:"red"}}
                     to="/requests/memos" 
-                    className="asideNavBar__navLink memos">
-                        
+                    className="asideNavBar__navLink memos"
+                >
                     <span className="material-icons">inbox</span>
-                    Memos
+                    <p>Memos</p>
 
                 </NavLink>
                     

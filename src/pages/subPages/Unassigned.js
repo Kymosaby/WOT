@@ -7,7 +7,7 @@ import "./Unassigned.css"
 export default function Unassigned() {
     
     return (
-        <div className = "subPage unassigned">
+        <div className = "unassigned">
             <Queue />
             <Focus />
         </div>

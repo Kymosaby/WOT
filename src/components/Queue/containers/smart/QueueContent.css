@@ -1,12 +1,6 @@
-
-.queueHeader {
-    height: 50px;
-    display: flex;
-    justify-content: space-evenly;
- 
-}
-
-.groupTittle {
-    display: flex;
-    justify-content: space-between;   
+.queueContent{
+    border-left:2px solid black;
+    border-bottom:2px solid black;
+    border-right:2px solid black;
+    padding: 12px;
 }

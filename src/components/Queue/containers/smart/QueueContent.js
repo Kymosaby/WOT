@@ -1,5 +1,4 @@
 import React from "react"
-import "./QueueContent.css"
 import {connect} from "react-redux"
 import { bindActionCreators} from "redux"
 import * as ReqActions from "../../../../redux/actions/actionCreators/requestsActions"
@@ -7,6 +6,7 @@ import * as QueueActions from "../../../../redux/actions/actionCreators/queueAct
 // import { pascalFormat } from "../../../../utils/TextNotation"
 import QueueGroup from "./QueueGroup"
 // import System from "../../../../System"
+import "./QueueContent.css"
 
 class QueueContent extends React.Component {
 

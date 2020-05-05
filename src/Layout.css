@@ -11,19 +11,9 @@
 }
 .page {
 
-    display : grid;
     grid-row: 2/3;
-    grid-template-columns: 200px 1fr;
 
-}
+    display : grid;
+    grid-template-columns: 120px 1fr;
 
-.aSide {
-
-    grid-column-start: 1;
-    grid-column-end: 1;
-    
-}
-
-.subPage {
-    grid-column: 2 / 3;
 }

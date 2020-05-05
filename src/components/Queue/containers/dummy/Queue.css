@@ -1,6 +1,7 @@
 .queue {
     width: 60%;
     height: 100%;
+    padding: 24px;
     display : flex;
     flex-flow: column nowrap;
 }

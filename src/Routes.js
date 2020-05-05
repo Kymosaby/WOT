@@ -13,14 +13,12 @@ const createRoutes = () => {
     return (
         <div className = "gridContainer">    
             <Header />
-            <div className = "page">  
-                <Switch>
-                    <Route exact path = "/" component = { HomePage } />
-                    <Route path = "/requests" component = { Requests } />
-                    <Route path = "/tasks" component = { Tasks } />
-                    <Route component = { NotFound } />
-                </Switch>
-            </div>
+            <Switch>
+                <Route exact path = "/" component = { HomePage } />
+                <Route path = "/requests" component = { Requests } />
+                <Route path = "/tasks" component = { Tasks } />
+                <Route component = { NotFound } />
+            </Switch>
         </div>
     )
 }

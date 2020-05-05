@@ -1,5 +1,7 @@
 .unassigned {
+    width: 100%;
     display: flex;
+    /* en caso de que no manejemos el layout de la subpage con flex, eliminar las propiedades aca */
+    flex-flow: row wrap;
     align-items: center;
-    justify-items: center;
 }
