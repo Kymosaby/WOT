@@ -1,6 +1,7 @@
 import * as ReqType from '../actions/actionTypes/requestsTypes'
 
 const INITIAL_STATE = {
+    // pinnedUnassignedRequests : [],
     unassignedRequests: [],
     standByRequests : [],
     requestSchema: []
@@ -23,7 +24,11 @@ const requestsReducer = ( state = INITIAL_STATE, action ) => {
                 ...state,
                 requestSchema : [...action.payload]
             }
-            
+        // case ReqType.GET_UNASSIGNED_PINNED_REQUESTS:
+        //     return {
+        //         ...state,
+        //         pinnedUnassignedRequests : action.payload
+        //     }
         default: return state;
     }
 }

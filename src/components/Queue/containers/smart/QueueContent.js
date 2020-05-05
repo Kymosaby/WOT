@@ -5,12 +5,20 @@ import * as ReqActions from "../../../../redux/actions/actionCreators/requestsAc
 import * as QueueActions from "../../../../redux/actions/actionCreators/queueActions"
 // import { pascalFormat } from "../../../../utils/TextNotation"
 import QueueGroup from "./QueueGroup"
+import PinnedSection from "../../PinnedSection"
 // import System from "../../../../System"
 import "./QueueContent.css"
 
 class QueueContent extends React.Component {
 
+    state = {
+        pinnedUnassignedRequests : localStorage.getItem("pinnedUnassignedRequests") 
+            ? JSON.parse(localStorage.getItem("pinnedUnassignedRequests"))
+            : [],
+    }
+
     componentDidMount() {
+        console.log(this.state.pinnedUnassignedRequests.indexOf(12233))
         this.props.requestActions.getUnassignedRequests();
         // this.props.requestActions.getStandByRequests();
         // this.props.requestActions.getRequestSchema();
@@ -30,12 +38,19 @@ class QueueContent extends React.Component {
         
     render() {       
         return (
-            this.props.queueGroups[this.props.activeGroupCategory]?
+            this.props.queueGroups.get(this.props.activeGroupCategory)?
                 <div className = "queueContent">
-                    {this.props.queueGroups[this.props.activeGroupCategory].map( group => {
+                    {this.state.pinnedUnassignedRequests && 
+                        <PinnedSection items = {this.props.unassignedRequests.filter( item => 
+                            this.state.pinnedUnassignedRequests.indexOf( (parseInt(item.id) )) !== -1 
+                        )}  
+                    />}
+                    {this.props.queueGroups.get(this.props.activeGroupCategory).map( group => {
                         return (
                             <QueueGroup
-                                items = {this.props.unassignedRequests.filter( item => item.groups[this.props.activeGroupCategory] === group)} 
+                                items = {this.props.unassignedRequests.filter( item => 
+                                    item.groups[this.props.activeGroupCategory] === group && this.state.pinnedUnassignedRequests.indexOf( (parseInt(item.id) )) === -1 
+                                )} 
                                 groupName = {group}
                             />
                         )
@@ -54,7 +69,7 @@ function mapStateToProps (store) {
         queueFilters : store.queueReducer.filters,
         queueGroups : store.queueReducer.groups,
         activeGroupCategory : store.queueReducer.activeGroupCategory,
-        activeFilters : store.queueReducer.activeFilters 
+        activeFilters : store.queueReducer.activeFilters
     }
 } 
 

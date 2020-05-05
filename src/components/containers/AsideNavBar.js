@@ -8,7 +8,7 @@ class AsideNavBar extends React.Component {
         return(
             <div className="asideNavBar page__aside"> 
                 <NavLink 
-                    activeStyle={{color:"red"}} 
+                    activeStyle={{color:"#EE5F06"}} 
                     to="/requests/dashboard" 
                     className="asideNavBar__navLink dashboard"
                 >
@@ -18,7 +18,7 @@ class AsideNavBar extends React.Component {
 
                 </NavLink>
                 <NavLink 
-                    activeStyle={{color:"red"}}
+                    activeStyle={{color:"#EE5F06"}}
                     to="/requests/unassigned" 
                     className="asideNavBar__navLink unassigned"
                 >
@@ -27,7 +27,7 @@ class AsideNavBar extends React.Component {
 
                 </NavLink>
                 <NavLink 
-                    activeStyle={{color:"red"}}
+                    activeStyle={{color:"#EE5F06"}}
                     to="/requests/assigned" 
                     className="asideNavBar__navLink assigned"
                 >   
@@ -36,7 +36,7 @@ class AsideNavBar extends React.Component {
 
                 </NavLink>   
                 <NavLink 
-                    activeStyle={{color:"red"}}
+                    activeStyle={{color:"#EE5F06"}}
                     to="/requests/memos" 
                     className="asideNavBar__navLink memos"
                 >

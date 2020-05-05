@@ -1,7 +1,7 @@
 import React from "react"
 import "../../../../System"
 import {pascalFormat} from "../../../../utils/TextNotation"
-import QueueItem from "../../QueueItem"
+import QueueItem from "../../../Request"
 
 import "./QueueGroup.css"
 

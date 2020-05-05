@@ -1,21 +1,21 @@
 import React from 'react';
-import "./QueueItem.css"
+import "./Request.css"
 import moment from "moment"
 
-const QueueItem = (props) => {
+const Request = (props) => {
     
+
     const itemSchema = {}
 
     for (let prop in props.item ) {
         itemSchema[prop] = props.item[prop]
     }
-
+    
     let start = moment(itemSchema.startDate,"YYYY-DD-MM").format("Do MMM - YYYY")
     return ( 
         // console.log(itemSchema.id)
         <li className="item">
-            <input id="pin"  type="checkbox"/>
-            <label for="pin" className= "pin--off material-icons"> label_important</label>
+            <span className= "pin--off material-icons"> star_border</span>
             <span className = "id">#{itemSchema.id}</span>
             <span className ="item__source">
                 <p className="source__topic">{itemSchema.subject}</p>
@@ -29,11 +29,17 @@ const QueueItem = (props) => {
             </span>
             <div className = "item__divisor"></div>
             <div className = "item__other">
-                <p>{start}</p>
-                <p>{itemSchema.receiver}</p>
-                <span>
-                    <i>email Icon</i>
-                    <i>{itemSchema.hits}</i>
+                <div className = "other__info">
+                    <p className = "info__start">{start}</p>
+                    <p className = "info__receiver">{itemSchema.scope}</p>
+                </div>
+                <span className = "other__hits">
+                    {!!itemSchema.hits && (
+                        <React.Fragment>
+                            <i className = "material-icons">mail_outline</i>
+                            <i>{itemSchema.hits}</i>
+                        </React.Fragment>
+                    )}
                 </span>
             </div>
             
@@ -41,4 +47,4 @@ const QueueItem = (props) => {
     );
 }
  
-export default QueueItem;
+export default Request;

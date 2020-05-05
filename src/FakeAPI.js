@@ -10,11 +10,7 @@ const api = {
             "hits",
         ],
         "groups" : {
-            "date" : [
-                "today",
-                "yesterday",
-                "olders"
-            ],
+            "date" : ["today","yesterday","olders"],
         },
         "filters" : [
             "team",
@@ -60,7 +56,7 @@ const api = {
                 "receiver" : "peruanenzo@bp.com",
                 "startDate": "2019-24-08",
                 "hits" : 0,
-                "scope" : "GT1",
+                "scope" : "Lucho",
                 "state" : "overdue",
                 "groups" : {
                     "date" : "today"
@@ -102,10 +98,10 @@ const api = {
                 "type" : "unassigned",
                 "from": "pura@css.com",
                 "subject" : "mas facil de reutilizar",
-                "receiver" : "feo@queka.com",
+                "receiver" : "casetrackingtoolsupport@accenture.com",
                 "startDate": "2019-24-08",
                 "hits" : 3,
-                "scope" : "GT1",
+                "scope" : "You",
                 "state" : "onTime",
                 "groups" : {
                     "date" : "yesterday"
@@ -135,7 +131,7 @@ const api = {
                 "receiver" : "global@gmail.com",
                 "startDate": "2019-24-08",
                 "hits" : 39,
-                "scope" : "WOT",
+                "scope" : "Lucho",
                 "state" : "standBy",
                 "groups" : {
                     "date" : "today"
