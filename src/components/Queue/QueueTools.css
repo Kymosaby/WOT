@@ -1,9 +1,67 @@
 .QueueTools {
-    margin-left: auto;
+    height: 40px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-flow: row wrap;
+
 }
 
-.QueueTools .material-icons {
-    font-size: 30px;
-    line-height: 30px;
-    height: 30px;
+.tools {
+    
+    display:flex;
+    align-items: center;
+    justify-items: flex-end;
+
 }
+
+.dropDown, .tools__searchBox, #search{
+    display: none;
+}
+
+.tools__searchButton:hover,
+.dropDown:hover {
+    cursor: pointer;
+}
+
+
+#search:checked ~ .tools__searchBox
+{
+    display: block;
+}
+
+#search:checked ~ .options{
+    height: 100
+}
+
+.options {
+    width: 200px;
+
+}
+.option {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    font-size: 16px;    
+    font-weight: 900;
+    font-family: 'Roboto', sans-serif;
+    height:24px;
+    padding: 4px
+}
+.option>span {
+    font-size: 16px;
+}
+#options:checked ~ ul {
+    height: auto;
+}
+
+.searchTags {
+    width: 100%;
+}
+
+
+
+.fas {
+    font-size: 20px;
+}
+

@@ -15,7 +15,7 @@ const Request = (props) => {
     return ( 
         // console.log(itemSchema.id)
         <li className="item">
-            <span className= "pin--off material-icons"> star_border</span>
+            <i class="pin--off fas fa-thumbtack"></i>
             <span className = "id">#{itemSchema.id}</span>
             <span className ="item__source">
                 <p className="source__topic">{itemSchema.subject}</p>

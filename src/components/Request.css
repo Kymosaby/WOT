@@ -29,7 +29,7 @@
 }
 
 .pin--off{
-    
+    color:red;
     line-height: var(--height);
     width:auto;
     margin-right: .5em; /* 8px */
