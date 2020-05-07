@@ -1,7 +1,7 @@
 import React from "react"
 import "../../../../System"
 import {pascalFormat} from "../../../../utils/TextNotation"
-import QueueItem from "../../../Request"
+import Request from "../../../Request"
 
 import "./QueueGroup.css"
 
@@ -18,7 +18,7 @@ export default function QueueGroup( props ) {
 
                 <ul className = "group__items">
                     {props.items.map( ( item , index ) => {
-                        return (<QueueItem id = { index } item = { item }/>)
+                        return (<Request id = { index } item = { item }/>)
                     })}
                 </ul>
             </div>

@@ -56,7 +56,10 @@ const api = {
                 "receiver" : "peruanenzo@bp.com",
                 "startDate": "2019-24-08",
                 "hits" : 0,
-                "scope" : "Lucho",
+                "scope" : {
+                    "assignation" : "BSI" ,
+                    "type" : "team"
+                },
                 "state" : "overdue",
                 "groups" : {
                     "date" : "today"
@@ -71,7 +74,10 @@ const api = {
                 "receiver" : "tortmundo@shell.com",
                 "startDate": "2019-24-08",
                 "hits" : 1, 
-                "scope" : "WOT",
+                "scope" : {
+                    "assignation" :"WOT",
+                    "type": "team"
+                },
                 "state" : "onTime" ,
                 "groups" : {
                     "date" : "yesterday"
@@ -101,7 +107,10 @@ const api = {
                 "receiver" : "casetrackingtoolsupport@accenture.com",
                 "startDate": "2019-24-08",
                 "hits" : 3,
-                "scope" : "You",
+                "scope" : {
+                    "assignation":"Manu",
+                    "type" : "person" 
+                },
                 "state" : "onTime",
                 "groups" : {
                     "date" : "yesterday"
@@ -116,7 +125,10 @@ const api = {
                 "receiver" : "else@gmail.com",
                 "startDate": "2019-24-08",
                 "hits" : 12,
-                "scope" : "GT1",
+                "scope" : {
+                    "assignation": "GT1",
+                    "type" : "team"
+                },
                 "state" : "onTime",
                 "groups" : {
                     "date" : "today"
@@ -131,7 +143,10 @@ const api = {
                 "receiver" : "global@gmail.com",
                 "startDate": "2019-24-08",
                 "hits" : 39,
-                "scope" : "Lucho",
+                "scope" : {
+                    "assignation" : "Lucho",
+                    "type": "person"
+                },
                 "state" : "standBy",
                 "groups" : {
                     "date" : "today"
@@ -146,7 +161,10 @@ const api = {
                 "receiver" : "else@outlook.com",
                 "startDate": "2019-24-08",
                 "hits" : 2,   
-                "scope" : "GT1",
+                "scope" : {
+                    "assignation" : "Fer",
+                    "type" : "person"
+                },
                 "state" : "standBy",
                 "groups" : {
                     "date" : "today"
