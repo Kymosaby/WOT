@@ -12,46 +12,65 @@ import "./QueueContent.css"
 class QueueContent extends React.Component {
 
     state = {
-        pinnedUnassignedRequests : localStorage.getItem("pinnedUnassignedRequests") 
+        pinnedItems : localStorage.getItem("pinnedUnassignedRequests")  //devuelve null si no tiene nada
             ? JSON.parse(localStorage.getItem("pinnedUnassignedRequests"))
             : [],
     }
 
+    togglePinStatus =  ( itemID ) => {
+        // console.log("Pin click")
+
+        let currentPinnedList = localStorage.getItem("pinnedUnassignedRequests")
+            ? JSON.parse(localStorage.getItem("pinnedUnassignedRequests"))
+            : []
+
+        let updatedList = this.state.pinnedItems.indexOf(itemID) === -1 //no lo encontro en pinned items, por lo que se deberia pinear 
+            ? this.pinItem(itemID, currentPinnedList)
+            : this.unpinItem(itemID, currentPinnedList) 
+        
+        // this.setState((prevState) => {
+        //     return { pinnedItems : updatedList }
+        // })
+    }
+
+    pinItem =  (itemID, list) => {
+        list.push(itemID);
+        localStorage.setItem("pinnedUnassignedRequests",JSON.stringify(list))
+        return list
+    }
+
+    unpinItem =  (itemID, list) => {
+        let idx = list.indexOf(itemID)
+        list.splice(idx, 1);
+        localStorage.setItem("pinnedUnassignedRequests",JSON.stringify(list))
+        return list
+    }
+
     componentDidMount() {
-        console.log(this.state.pinnedUnassignedRequests.indexOf(12233))
         this.props.requestActions.getUnassignedRequests();
         // this.props.requestActions.getStandByRequests();
-        // this.props.requestActions.getRequestSchema();
         this.props.queueActions.getQueueGroups();
         this.props.queueActions.getQueueFilters();
     }
 
-    // buildQueueHeader() {
-    //     return (
-    //         <ul className = "queueHeader">  
-    //             {this.props.requestSchema.map( ( tittle, index ) => {
-    //                 return <li className = "" key= {index}>{pascalFormat(tittle)}</li>
-    //             })}
-    //         </ul>
-    //     )
-    // }
-        
     render() {       
         return (
             this.props.queueGroups.get(this.props.activeGroupCategory)?
                 <div className = "queueContent">
-                    {this.state.pinnedUnassignedRequests && 
-                        <PinnedSection items = {this.props.unassignedRequests.filter( item => 
-                            this.state.pinnedUnassignedRequests.indexOf( (parseInt(item.id) )) !== -1 
-                        )}  
-                    />}
+                    {this.state.pinnedItems && 
+                        <PinnedSection 
+                            items = {this.props.items.filter( item => this.state.pinnedItems.indexOf( (parseInt(item.id) )) !== -1 )}
+                            togglePinStatus = {this.togglePinStatus}                       
+                        />
+                    }
                     {this.props.queueGroups.get(this.props.activeGroupCategory).map( group => {
                         return (
                             <QueueGroup
-                                items = {this.props.unassignedRequests.filter( item => 
-                                    item.groups[this.props.activeGroupCategory] === group && this.state.pinnedUnassignedRequests.indexOf( (parseInt(item.id) )) === -1 
+                                items = {this.props.items.filter( item => 
+                                    item.groups[this.props.activeGroupCategory] === group && this.state.pinnedItems.indexOf( (parseInt(item.id) )) === -1 
                                 )} 
                                 groupName = {group}
+                                togglePinStatus = {this.togglePinStatus}  
                             />
                         )
                     })} 
@@ -64,8 +83,8 @@ class QueueContent extends React.Component {
 function mapStateToProps (store) {
 
     return {
-        unassignedRequests : store.requestsReducer.unassignedRequests,
-        requestSchema : store.requestsReducer.requestSchema,
+        items : store.requestsReducer.unassignedRequests,
+        itemSchema : store.requestsReducer.requestSchema,
         queueFilters : store.queueReducer.filters,
         queueGroups : store.queueReducer.groups,
         activeGroupCategory : store.queueReducer.activeGroupCategory,

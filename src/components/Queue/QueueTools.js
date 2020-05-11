@@ -9,7 +9,6 @@ export default class QueueTools extends React.Component {
         this.handleOptionSelect = this.handleOptionSelect.bind(this)
         this.handleSearchAction = this.handleSearchAction.bind(this)
     }
-
     state = {
         searchValue : "",
         searchTags : [{"":""}],

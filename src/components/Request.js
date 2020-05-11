@@ -29,6 +29,11 @@ class Request extends React.Component{
         })
     }
 
+    handlePinAction = () => {
+          
+        this.setState( ( prevState ) => { return { pinned : !prevState.pinned } } )
+    }
+
     // const itemSchema = {}
     
     // for (let prop in props.item ) {
@@ -40,8 +45,11 @@ class Request extends React.Component{
         let myRequest = this.request;
         let start = moment(myRequest.startDate,"YYYY-DD-MM").format("Do MMM - YYYY")
         return ( 
-            <li className="item" onDoubleClick = {this.handleItemClick}>
-                <i class="pin--off fas fa-thumbtack"></i>
+            <li className="request" onDoubleClick = {this.handleItemClick}>
+                <i 
+                    class={`${this.state.pinned ? "pin--on" : "pin--off"} pin fas fa-thumbtack`}
+                    onClick = {this.props.togglePinStatus(myRequest.id)}
+                ></i>
                 <span className = "id">#{myRequest.id}</span>
                 <span className ="item__source">
                 <p className="source__topic">{myRequest.topic}</p>

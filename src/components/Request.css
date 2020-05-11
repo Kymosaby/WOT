@@ -1,18 +1,21 @@
-.item {
 
-    margin: 4px 0;
-    --height : 55px;
+/* variables  */
+* {
+    --height : 60px;
+}
+
+.request {
+
+    margin: 4px 0; 
     display: flex;
     width: 100%;
-    flex-flow: row nowrap;
     height: var(--height);
     font-family: 'Roboto', sans-serif;
-    font-weight: 400;
-    font-size: 16px;
     align-items: center;
 
 }
-.item:hover {
+
+.request:hover {
     
     border: 1px solid black;
     border-radius: 4px;
@@ -20,27 +23,39 @@
 
 }
 
-.item:hover > .pin--off {
+.request:hover > .pin {
     opacity: 1;
 }
 
-.item:hover > .pin--off:hover {
+.request:hover > .pin:hover {
     cursor: pointer;
 }
 
-.pin--off{
-    color:red;
-    line-height: var(--height);
-    width:auto;
+.pin{
+
+    -webkit-text-stroke: 2px black;
+    color: red;
     margin-right: .5em; /* 8px */
     margin-left: .5em; /* 8px */
-    
     /* aca lo escondemos */
     opacity: 0;
 }
 
-.id{
+.pin-off {
 
+    background-color: (238,);
+    
+}
+
+.pin--on {
+    opacity: 1;
+    background-color: rgba(238, 95 , 6, .5);
+    border: 2px solid rgba(238, 95 , 6 ) ;
+    border-radius: 4px;
+}
+
+
+.id{
     font-family: 'Roboto Slab', serif;
     background-color: rgba(0, 0, 0, 1);
     color: rgba(255, 255, 255, 0.7);
