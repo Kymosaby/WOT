@@ -1,7 +1,7 @@
 import * as QueueType from '../../actions/actionTypes/requests/queueTypes'
 
 const INITIAL_STATE = {
-    groups : new Map(),
+    groups : new Map(), //{category : [groupitems]}
     activeGroupCategory : "date",
     searchTags : new Map(),
     pinnedItems : [], // {itemID, isGone}
@@ -14,7 +14,7 @@ const queueReducer = ( state = INITIAL_STATE, action ) => {
         case QueueType.INIT_QUEUE:
 
             let myGroups = new Map(state.groups)
-            action.payload.map(group => myGroups.set(group.category, group.groupItems))
+            action.payload.myGroups.forEach( group => myGroups.set( group.category, group.groupItems ))
 
             return {
                 ...state,

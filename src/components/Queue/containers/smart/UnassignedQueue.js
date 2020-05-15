@@ -1,81 +1,57 @@
 import React from "react"
 import {connect} from "react-redux"
 import { bindActionCreators} from "redux"
-import * as ReqActions from "../../../../redux/actions/actionCreators/requests/requestsActions"
 import * as QueueActions from "../../../../redux/actions/actionCreators/requests/queueActions"
 // import { pascalFormat } from "../../../../utils/TextNotation"
-import QueueGroup from "./QueueGroup"
+import QueueGroups from "./QueueGroups"
 import PinnedSection from "../../PinnedSection"
-import System from "../../../../System"
+
 import "./UnassignedQueue.css"
+import System from "../../../../System"
 
 class UnassignedQueue extends React.Component {
 
-    togglePinStatus =  ( itemID ) => {
-        
+    constructor(props){
+        super(props)
+        //en este init, pasarle el id de la queue para tenerlo en un mapa de nuestros estados a todas las queue
+        props.queueActions.queueInit( this.props.unassignedItems )
     }
 
-    pinItem =  (itemID, list) => {
-        
-    }
-
-    unpinItem =  (itemID, list) => {
-        
-    }
-
-    componentDidMount() {
-        this.props.requestActions.getUnassignedRequests();
-        // this.props.requestActions.getStandByRequests();
-        this.props.queueActions.getQueueGroups();
-        this.props.queueActions.getQueueFilters();
-    }
-
-    render() {       
-    
+    render() {
         return (
-            this.props.queueGroups.get(this.props.activeGroupCategory)?
-                <div className = "queueContent">
-                    {this.state.pinnedItems && 
-                        <PinnedSection 
-                            items = {this.props.items.filter( item => this.state.pinnedItems.indexOf( (parseInt(item.id) )) !== -1 )}
-                            togglePinStatus = {this.togglePinStatus}                       
-                        />
-                    }
-                    {this.props.queueGroups.get(this.props.activeGroupCategory).map( group => {
-                        return (
-                            <QueueGroup
-                                items = {this.props.items.filter( item => 
-                                    item.groups[this.props.activeGroupCategory] === group && this.state.pinnedItems.indexOf( (parseInt(item.id) )) === -1 
-                                )} 
-                                groupName = {group}
-                                togglePinStatus = {this.togglePinStatus}  
-                            />
-                        )
-                    })} 
-                </div> 
-            : false
+            <div className = "queueContent">
+                <PinnedSection type = "unassigned" />
+                <QueueGroups 
+                    metaData = {{
+                        // stage : System.schema.request.stage.unassigned,
+                        groupCategory : this.props.activeGroupCategory,
+                    }}
+                /> )} 
+            </div> 
         ) 
     }
 }
 
 function mapStateToProps (store) {
-
+    
     let requestNameSpace = System.schema.request
     
     return {
-        unassignedItems : store.requestsReducer.requests.filter(req => req.type === requestNameSpace.type.unassigned && req.state !== requestNameSpace.state.standBy),
-        
-        searchTags : store.queueReducer.searchTags,
-        queueGroups : store.queueReducer.groups,
+        //deberiamos dinamicamente determinar de donde sacar los items a proyectar segun la categoria de grupos provista por el componente padre
+        unassignedItems : store.requestsReducer.requests.filter(req => (
+            req.type === requestNameSpace.type.request && 
+            req.state !== requestNameSpace.state.standBy && 
+            req.stage === requestNameSpace.stage.unassigned
+        )),
+        // searchTags : store.queueReducer.searchTags, //map
         activeGroupCategory : store.queueReducer.activeGroupCategory
     }
 } 
 
 function mapDispatchToProps(dispatch) {
     return {
-        requestActions : bindActionCreators(ReqActions, dispatch),
-        queueActions : bindActionCreators (QueueActions, dispatch)
+        queueActions : bindActionCreators ( QueueActions, dispatch ),
     }
 }
 
-export default connect (mapStateToProps, mapDispatchToProps) (UnassignedQueue)
+export default connect ( mapStateToProps, mapDispatchToProps ) (UnassignedQueue)

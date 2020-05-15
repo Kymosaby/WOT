@@ -18,7 +18,7 @@ export default function QueueGroup( props ) {
 
                 <ul className = "group__items">
                     {props.items.map( ( item , index ) => {
-                        return (<Request togglePinStatus = {props.togglePinStatus}  id = { index } item = { item }/>)
+                        return (<Request id = { index } item = { item } />)
                     })}
                 </ul>
             </div>

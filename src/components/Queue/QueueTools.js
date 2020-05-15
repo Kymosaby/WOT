@@ -2,7 +2,7 @@ import React from "react"
 import "./QueueTools.css"
 
 export default class QueueTools extends React.Component {
-    
+    //desde aca se debe cambiar el group category que re-renderiza a su componente hermano (Queue)
     constructor (props) {
         super(props);
         this.handleSearchInput = this.handleSearchInput.bind(this)

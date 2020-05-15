@@ -1,22 +1,20 @@
 const api = {
     "Requests" : {
-        "schema" : [
-            "id",
-            "from",
-            "subject",
-            "receiver",
-            "start Date",
-            "scope",
-            "hits",
+        // "schema" : [
+        //     "id",
+        //     "from",
+        //     "subject",
+        //     "receiver",
+        //     "start Date",
+        //     "scope",
+        //     "hits",
+        // ],
+        "groups" : [
+            {
+                "category": "date",
+                "groupItems" : ["today","yesterday","olders"]
+            },
         ],
-        "groups" : {
-            "categories" : [
-                {
-                    "category": "date",
-                    "groupItems" : ["today","yesterday","olders"]
-                },
-            ]
-        },
         "filters" : [
             "team",
             "date",
@@ -55,6 +53,7 @@ const api = {
             // },
             {
                 "id" : "2123",
+                "type": "request",
                 "stage" : "unassigned",
                 "from": "esteban.morales@yahoo.com.ar",
                 "subject" : "crear tus propios tipos de datos",
@@ -73,6 +72,7 @@ const api = {
             },
             {
                 "id" : "1123",
+                "type": "request",
                 "stage" : "unassigned",
                 "from": "manuel_ibar@hotmail.com",
                 "subject" : "le quiero poner la llave",
@@ -106,6 +106,7 @@ const api = {
             // },
             {
                 "id" : "12233",
+                "type": "request",
                 "stage" : "unassigned",
                 "from": "pura@css.com",
                 "subject" : "mas facil de reutilizar",
@@ -124,6 +125,7 @@ const api = {
             },
             {
                 "id" : "4536",
+                "type": "request",
                 "stage" : "unassigned",
                 "from": "condicional@yahoo.com",
                 "subject" : "return dos mas dos",
@@ -142,6 +144,7 @@ const api = {
             },
             {
                 "id" : "3333",
+                "type": "request",
                 "stage" : "unassigned",
                 "from": "libreria@yahoo.com",
                 "subject" : "apurate neneeee",
@@ -160,6 +163,7 @@ const api = {
             },
             {
                 "id" : "44236",
+                "type": "request",
                 "stage" : "unassigned",
                 "from": "solucionar@yahoo.com",
                 "subject" : "funciones de la lubrearia",

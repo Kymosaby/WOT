@@ -4,15 +4,15 @@ import api from "../../../../FakeAPI"
 
 
 //desacoplar el local storage de unassigned con un parametro queue type
-export const initQueue = (items) => {
+export const queueInit = ( items ) => {
     
-    let myGroups = api.Requests.groups.categories
+    let myGroups = api.Requests.groups //[{"cat",[groupitems]}]
     
     let myPinnedItems = localStorage.getItem("unassignedPinnedItems")
         ? JSON.parse(localStorage.getItem("unassignedPinnedItems")).map(itemID => {
             return ({
-                itemID : itemID, 
-                isGone: items.indexOf(itemID) !== -1 ? false : true  
+                itemID : itemID,
+                isGone: items.indexOf(itemID) !== -1 ? false : true
             })
         }): []
     

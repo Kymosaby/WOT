@@ -16,7 +16,6 @@ const unassignedReducer = (state = INITIAL_STATE, action) => {
                 ...state,
                 activeRequest : action.payload
             }
-            
 
 
         case unassignedTypes.GET_ALL_FILTERS:            

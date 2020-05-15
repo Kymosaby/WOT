@@ -1,4 +1,5 @@
 const System = {
+    entities : ["request","task"],
     schema : {
         request : {
             state : {
@@ -19,6 +20,12 @@ const System = {
             }
 
         },
+    },
+
+    reduxSchema : {
+        request : "requestReducer"
+
     }
+
 }
 export default System

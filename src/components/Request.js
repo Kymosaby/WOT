@@ -48,7 +48,7 @@ class Request extends React.Component{
             <li className="request" onDoubleClick = {this.handleItemClick}>
                 <i 
                     class={`${this.state.pinned ? "pin--on" : "pin--off"} pin fas fa-thumbtack`}
-                    onClick = {this.props.togglePinStatus(myRequest.id)}
+                    // onClick = {this.props.togglePinStatus(myRequest.id)}
                 ></i>
                 <span className = "id">#{myRequest.id}</span>
                 <span className ="item__source">
