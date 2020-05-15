@@ -24,6 +24,7 @@ const queueReducer = ( state = INITIAL_STATE, action ) => {
             }
 
         case QueueType.SET_ACTIVE_GROUP_CATEGORY:
+            
             return {
                 ...state,
                 activeGroupCategory : action.payload
@@ -32,27 +33,18 @@ const queueReducer = ( state = INITIAL_STATE, action ) => {
 
         case QueueType.SET_PINNED_ITEM:
 
-            let myQueueItems = state.queueItems.filter(item => item !== action.payload.itemID)
-            
-            //chequear si esto no viola los terminos de una funcion pura y que repercuciones puede llegar a tener
-            let myPinnedItems = state.pinnedItems.push({ itemID, isGone: false })
-
             return {
                 ...state,
-                pinnedItems : myPinnedItems,
-                queueItems : myQueueItems
+                pinnedItems : state.pinnedItems.push({ itemID : action.payload.itemID , isGone: false }),
+                queueItems : state.queueItems.filter(item => item !== action.payload.itemID)
             }
 
         case QueueType.REMOVE_PINNED_ITEM:
 
-            //chequear si esto no viola los terminos de una funcion pura y que repercuciones puede llegar a tener
-            let myQueueItems = state.queueItems.push(itemID)
-            let myPinnedItems = state.pinnedItems.filter(item => item.itemID !== action.payload.itemID)
-            
             return {
                 ...state,
-                pinnedItems : myPinnedItems,
-                queueItems : myQueueItems
+                pinnedItems : state.queueItems.push(action.payload.itemID),
+                queueItems : state.pinnedItems.filter(item => item.itemID !== action.payload.itemID)
             }
         
         // case QueueType.REMOVE_ITEM:
@@ -66,43 +58,36 @@ const queueReducer = ( state = INITIAL_STATE, action ) => {
 
         case QueueType.SEARCH:
         
-            let mySearchTags = new Map( sate.searchTags )
-
-            mySearchTags.get(action.payload.searchCategory)
-                ? mySearchTags.set(action.payload.searchCategory, [ ...mySearchTags.get(action.payload.searchCategory), action.payload.value])
-                : mySearchTags.set(action.payload.searchCategory, [action.payload.value])
-
             return {
                 ...state,
-                searchTags : mySearchTags
+                searchTags : new Map( sate.searchTags )
+                    .get(action.payload.searchCategory)
+                        ? mySearchTags.set(
+                            action.payload.searchCategory, 
+                            [ ...mySearchTags.get(action.payload.searchCategory), action.payload.value])
+                        : mySearchTags.set(action.payload.searchCategory, [action.payload.value])
             }
 
         case QueueType.REMOVE_SEARCH_ITEM:
         
-            let mySearchTags = new Map( sate.searchTags )
-
-            // tenemos que saber si eliminar la entry de una (siendo este item el ultimo) o filtrarlo para sacar un item
-            mySearchTags.get(action.payload.searchCategory)
-                .filter(values => values !== action.payload.value).length
-                    ? mySearchTags.set(
-                        action.payload.searchCategory, 
-                        mySearchTags.get(action.payload.searchCategory)
-                            .filter(value => value !== action.payload.value))
-                    : mySearchTags.delete(action.payload.searchCategory)
-
             return {
                 ...state,
-                searchTags : mySearchTags
+                // tenemos que saber si eliminar la entry de una (siendo este item el ultimo) o filtrarlo para sacar un item
+                searchTags : new Map( sate.searchTags )
+                    .get(action.payload.searchCategory)
+                    .filter(values => values !== action.payload.value).length
+                        ? mySearchTags.set(
+                            action.payload.searchCategory, 
+                            mySearchTags.get(action.payload.searchCategory)
+                                .filter(value => value !== action.payload.value))
+                        : mySearchTags.delete(action.payload.searchCategory)
             }
 
         case QueueType.REMOVE_SEARCH_TAG:
-        
-            let mySearchTags = new Map( sate.searchTags )
-            mySearchTags.delete(action.payload.searchCategory)
-
+               
             return {
                 ...state,
-                searchTags : mySearchTags
+                searchTags : new Map( sate.searchTags ).delete(action.payload.searchCategory)
             }
 
         default: return state;
