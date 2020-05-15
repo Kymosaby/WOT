@@ -2,14 +2,14 @@ import React from "react"
 import {connect} from "react-redux"
 import { bindActionCreators} from "redux"
 import * as ReqActions from "../../../../redux/actions/actionCreators/requestsActions"
-import * as QueueActions from "../../../../redux/actions/actionCreators/queueActions"
+import * as QueueActions from "../../../../redux/actions/actionCreators/requests/queueActions"
 // import { pascalFormat } from "../../../../utils/TextNotation"
 import QueueGroup from "./QueueGroup"
 import PinnedSection from "../../PinnedSection"
-// import System from "../../../../System"
-import "./QueueContent.css"
+import System from "../../../../System"
+import "./UnassignedQueue.css"
 
-class QueueContent extends React.Component {
+class UnassignedQueue extends React.Component {
 
     state = {
         pinnedItems : localStorage.getItem("pinnedUnassignedRequests")  //devuelve null si no tiene nada
@@ -54,6 +54,7 @@ class QueueContent extends React.Component {
     }
 
     render() {       
+    
         return (
             this.props.queueGroups.get(this.props.activeGroupCategory)?
                 <div className = "queueContent">
@@ -82,13 +83,14 @@ class QueueContent extends React.Component {
 
 function mapStateToProps (store) {
 
+    let requestNameSpace = System.schema.request
+    
     return {
-        items : store.requestsReducer.unassignedRequests,
-        itemSchema : store.requestsReducer.requestSchema,
-        queueFilters : store.queueReducer.filters,
+        unassignedItems : store.requestsReducer.requests.filter(req => req.type === requestNameSpace.type.unassigned && req.state !== requestNameSpace.state.standBy),
+        
+        searchTags : store.queueReducer.searchTags,
         queueGroups : store.queueReducer.groups,
-        activeGroupCategory : store.queueReducer.activeGroupCategory,
-        activeFilters : store.queueReducer.activeFilters
+        activeGroupCategory : store.queueReducer.activeGroupCategory
     }
 } 
 
@@ -99,4 +101,4 @@ function mapDispatchToProps(dispatch) {
     }
 }
 
-export default connect (mapStateToProps, mapDispatchToProps) (QueueContent)
+export default connect (mapStateToProps, mapDispatchToProps) (UnassignedQueue)

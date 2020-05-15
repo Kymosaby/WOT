@@ -1,8 +1,6 @@
 import React from "react"
 import QueueTools from "../../QueueTools"
-// import QueueTags from "../smart/QueueTags"
-import QueueContent from "../smart/QueueContent"
-import StandBy from "../smart/StandBy"
+import UnassignedQueue from "../smart/UnassignedQueue"
 import "./Queue.css"
 
 export default function Queue() {
@@ -10,8 +8,7 @@ export default function Queue() {
     return (
         <div className = "queue">
             <QueueTools />
-            <QueueContent />
-            <StandBy />
+            <UnassignedQueue />
         </div>
     )
     

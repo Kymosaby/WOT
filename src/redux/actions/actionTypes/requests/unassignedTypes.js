@@ -1,0 +1,6 @@
+export const SET_ACTIVE_REQUEST = "set_active_request"
+export const REMOVE_ACTIVE_REQUEST = "remove_active_request"
+export const GET_ALL_FILTERS = "get_all_filters"
+export const SET_FILTER = "set_filter"
+export const REMOVE_FILTER = "remove_filter"
+export const CLEAR_ALL_FILTERS = "clear_filters"

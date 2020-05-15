@@ -10,7 +10,12 @@ const api = {
             "hits",
         ],
         "groups" : {
-            "date" : ["today","yesterday","olders"],
+            "categories" : [
+                {
+                    "category": "date",
+                    "groupItems" : ["today","yesterday","olders"]
+                },
+            ]
         },
         "filters" : [
             "team",
@@ -20,7 +25,7 @@ const api = {
         "requests" : [
             // {
             //     "id" : "123784",
-            //     "type" : "unassigned",
+            //     "stage" : "unassigned",
             //     "from": "manuel_ibar@bp.com",
             //     "subject" : "Pasame la mayonesa",
             //     "receiver" : "manuel_ibar@accenture.com",
@@ -35,7 +40,7 @@ const api = {
             // },
             // {
             //     "id" : "112389",
-            //     "type" : "unassigned",
+            //     "stage" : "unassigned",
             //     "from": "manuel.ibar@hotmail.com",
             //     "subject" : "dentro del contexto de la funcion",
             //     "receiver" : "ever.rivero@gmail.com",
@@ -50,7 +55,7 @@ const api = {
             // },
             {
                 "id" : "2123",
-                "type" : "unassigned",
+                "stage" : "unassigned",
                 "from": "esteban.morales@yahoo.com.ar",
                 "subject" : "crear tus propios tipos de datos",
                 "receiver" : "peruanenzo@bp.com",
@@ -68,7 +73,7 @@ const api = {
             },
             {
                 "id" : "1123",
-                "type" : "unassigned",
+                "stage" : "unassigned",
                 "from": "manuel_ibar@hotmail.com",
                 "subject" : "le quiero poner la llave",
                 "receiver" : "tortmundo@shell.com",
@@ -86,7 +91,7 @@ const api = {
             },
             // {
             //     "id" : "552413",
-            //     "type" : "unassigned",
+            //     "stage" : "unassigned",
             //     "from": "bjorn@naguili.res",
             //     "subject" : "Const F = y el equis",
             //     "receiver" : "manolito@outlook.com",
@@ -101,7 +106,7 @@ const api = {
             // },
             {
                 "id" : "12233",
-                "type" : "unassigned",
+                "stage" : "unassigned",
                 "from": "pura@css.com",
                 "subject" : "mas facil de reutilizar",
                 "receiver" : "casetrackingtoolsupport@accenture.com",
@@ -119,7 +124,7 @@ const api = {
             },
             {
                 "id" : "4536",
-                "type" : "unassigned",
+                "stage" : "unassigned",
                 "from": "condicional@yahoo.com",
                 "subject" : "return dos mas dos",
                 "receiver" : "else@gmail.com",
@@ -137,7 +142,7 @@ const api = {
             },
             {
                 "id" : "3333",
-                "type" : "unassigned",
+                "stage" : "unassigned",
                 "from": "libreria@yahoo.com",
                 "subject" : "apurate neneeee",
                 "receiver" : "global@gmail.com",
@@ -155,7 +160,7 @@ const api = {
             },
             {
                 "id" : "44236",
-                "type" : "unassigned",
+                "stage" : "unassigned",
                 "from": "solucionar@yahoo.com",
                 "subject" : "funciones de la lubrearia",
                 "receiver" : "else@outlook.com",
