@@ -7,9 +7,17 @@ const System = {
                 "onTime" : "onTime"
             },
             type : {
+                "request" : "request",
+                "memo" : "memo",
+                "spam" : "spam"
+            },
+            stage : {
                 "unassigned" : "unassigned",
-                "memo" : "memo"
+                "assigned" : "assigned",
+                "completed" : "completed",
+                "rejected" : "rejected",
             }
+
         },
     }
 }

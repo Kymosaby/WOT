@@ -1,7 +1,0 @@
-export const GET_QUEUE_GROUPS = "get_queue_groups"
-export const GET_QUEUE_FILTERS = "get_queue_filters"
-export const SET_ACTIVE_GROUP_CATEGORY = "set_active_group_category"
-export const SET_ACTIVE_FILTER = "set_active_filter"
-export const REMOVE_FILTER = "remove_filter"
-export const SET_PINNED_ITEM = "set_pinned_item"
-export const SET_FOCUSED_ITEM = "set_focused_item"
