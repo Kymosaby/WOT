@@ -1,9 +1,9 @@
 import * as unassignedTypes from '../../actions/actionTypes/requests/unassignedTypes'
 
 const INITIAL_STATE = {
-    activeRequest = 0,
-    activeFilters = new Map(), //schema : filterCategory <string> : filteredValues <stringArray>  
-    filters = [] 
+    activeRequest : 0,
+    activeFilters : new Map(), //schema : filterCategory <string> : filteredValues <stringArray>  
+    filters : [] 
 }
 
 const unassignedReducer = (state = INITIAL_STATE, action) => {
@@ -35,7 +35,7 @@ const unassignedReducer = (state = INITIAL_STATE, action) => {
             }
         case unassignedTypes.REMOVE_FILTER:
 
-            let myFilters = state.activeFilters.delete(action.payload)
+            let filters = state.activeFilters.delete(action.payload)
             return {
                 ...state,
                 activeFilters : myFilters

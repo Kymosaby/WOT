@@ -46,7 +46,7 @@ const queueReducer = ( state = INITIAL_STATE, action ) => {
         case QueueType.REMOVE_PINNED_ITEM:
 
             //chequear si esto no viola los terminos de una funcion pura y que repercuciones puede llegar a tener
-            let myQueueItems = state.queueItems.push(itemID)
+            let queueItems = state.queueItems.push(itemID)
             let myPinnedItems = state.pinnedItems.filter(item => item.itemID !== action.payload.itemID)
             
             return {
