@@ -1,7 +1,7 @@
 import React from "react"
 import {connect} from "react-redux"
 import { bindActionCreators} from "redux"
-import * as ReqActions from "../../../../redux/actions/actionCreators/requestsActions"
+import * as ReqActions from "../../../../redux/actions/actionCreators/requests/requestsActions"
 import * as QueueActions from "../../../../redux/actions/actionCreators/requests/queueActions"
 // import { pascalFormat } from "../../../../utils/TextNotation"
 import QueueGroup from "./QueueGroup"
@@ -11,39 +11,16 @@ import "./UnassignedQueue.css"
 
 class UnassignedQueue extends React.Component {
 
-    state = {
-        pinnedItems : localStorage.getItem("pinnedUnassignedRequests")  //devuelve null si no tiene nada
-            ? JSON.parse(localStorage.getItem("pinnedUnassignedRequests"))
-            : [],
-    }
-
     togglePinStatus =  ( itemID ) => {
-        // console.log("Pin click")
-
-        let currentPinnedList = localStorage.getItem("pinnedUnassignedRequests")
-            ? JSON.parse(localStorage.getItem("pinnedUnassignedRequests"))
-            : []
-
-        let updatedList = this.state.pinnedItems.indexOf(itemID) === -1 //no lo encontro en pinned items, por lo que se deberia pinear 
-            ? this.pinItem(itemID, currentPinnedList)
-            : this.unpinItem(itemID, currentPinnedList) 
         
-        // this.setState((prevState) => {
-        //     return { pinnedItems : updatedList }
-        // })
     }
 
     pinItem =  (itemID, list) => {
-        list.push(itemID);
-        localStorage.setItem("pinnedUnassignedRequests",JSON.stringify(list))
-        return list
+        
     }
 
     unpinItem =  (itemID, list) => {
-        let idx = list.indexOf(itemID)
-        list.splice(idx, 1);
-        localStorage.setItem("pinnedUnassignedRequests",JSON.stringify(list))
-        return list
+        
     }
 
     componentDidMount() {

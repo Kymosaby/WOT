@@ -56,7 +56,7 @@ export const unpinItem = (itemID) => {
         ? JSON.parse(localStorage.getItem("unassignedPinnedItems"))
         : []
 
-    localStorage.setItem("unassignedPinnedItems", JSON.stringify(myPinnedItems.filter((item)=>{item !== itemID})))
+    localStorage.setItem("unassignedPinnedItems", JSON.stringify(myPinnedItems.filter( ( item ) => item !== itemID )))
     
     return ({
         type: QueueType.REMOVE_PINNED_ITEM,

@@ -1,5 +1,5 @@
-import * as ReqType from "../actionTypes/requestsTypes"
-import api from "../../../FakeAPI"
+import * as ReqType from "../../actionTypes/requests/requestsTypes"
+import api from "../../../../FakeAPI"
 
 
 

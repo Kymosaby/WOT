@@ -1,4 +1,4 @@
-import * as ReqType from '../actions/actionTypes/requestsTypes'
+import * as ReqType from '../../actions/actionTypes/requests/requestsTypes'
 
 const INITIAL_STATE = {
     requests: [],
