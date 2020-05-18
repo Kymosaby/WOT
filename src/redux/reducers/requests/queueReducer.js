@@ -4,8 +4,9 @@ const INITIAL_STATE = {
     groups : new Map(), //{category : [groupitems]}
     activeGroupCategory : "date",
     searchTags : new Map(),
-    pinnedItems : [], // {itemID, isGone}
-    queueItems : [] // {itemID}
+    pinnedItems : [], // {{item}, isGone}
+    unpinnedItems : [], //{item}
+    queueItems : [] // {{item}, viewed, focused}
 };
 
 const queueReducer = ( state = INITIAL_STATE, action ) => {
@@ -18,7 +19,14 @@ const queueReducer = ( state = INITIAL_STATE, action ) => {
 
             return {
                 ...state,
-                queueItems : action.payload.myItems,
+                queueItems : action.payload.myItems.map((item) => {
+                    return {
+                        item,
+                        viewed : false,
+                        focused : false
+                    }
+                }),
+                unpinnedItems : action.payload.myItems,
                 pinnedItems : action.payload.myPinnedItems,
                 groups : myGroups
             }

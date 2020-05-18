@@ -1,5 +1,5 @@
-export const SET_ACTIVE_REQUEST = "set_active_request"
-export const REMOVE_ACTIVE_REQUEST = "remove_active_request"
+export const SET_FOCUS_REQUEST = "set_focus_request"
+export const REMOVE_FOCUS_REQUEST = "remove_focus_request"
 export const GET_ALL_FILTERS = "get_all_filters"
 export const SET_FILTER = "set_filter"
 export const REMOVE_FILTER = "remove_filter"

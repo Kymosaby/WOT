@@ -1,25 +1,26 @@
-import * as QueueType from "../../actionTypes/requests/unassignedTypes"
+import * as unassignedTypes from "../../actionTypes/requests/unassignedTypes"
 import api from "../../../../FakeAPI"
 
-export const  setActiveRequest = (itemID) => {
+export const  setFocusOnRequest = (itemID) => {
 
     return ({
-        type : QueueType.SET_ACTIVE_REQUEST,
+        type : unassignedTypes.SET_FOCUS_REQUEST,
         payload : itemID
     })
 }
 
-export const  removeActiveRequest = () => {
+export const  removeFocusOnRequest = (itemID) => {
 
     return ({
-        type : QueueType.SET_ACTIVE_REQUEST,
+        type : unassignedTypes.REMOVE_FOCUS_REQUEST,
+        payload : itemID
     })
 }
 
 export const getAllFilters = () => {
     
     return ({
-        type : QueueType.GET_ALL_FILTERS,
+        type : unassignedTypes.GET_ALL_FILTERS,
         payload : api.Requests.filters
     })
 }
@@ -27,7 +28,7 @@ export const getAllFilters = () => {
 export const setFilter = (filterCategory, value) => {
     
     return ({
-        type : QueueType.SET_FILTER,
+        type : unassignedTypes.SET_FILTER,
         payload : [filterCategory, [value]]
     })
 }
@@ -35,7 +36,7 @@ export const setFilter = (filterCategory, value) => {
 export const removeFilter = (filterCategory) => {
 
     return ({
-        type : QueueType.REMOVE_FILTER,
+        type : unassignedTypes.REMOVE_FILTER,
         payload : filterCategory
     })
 }
@@ -43,6 +44,6 @@ export const removeFilter = (filterCategory) => {
 export const clearAllFilters = () => {
 
     return ({
-        type : QueueType.SET_FILTER,
+        type : unassignedTypes.SET_FILTER,
     })
 }
