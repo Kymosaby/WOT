@@ -9,11 +9,10 @@ export const  setFocusOnRequest = (itemID) => {
     })
 }
 
-export const  removeFocusOnRequest = (itemID) => {
+export const  removeFocusOnRequest = () => {
 
     return ({
         type : unassignedTypes.REMOVE_FOCUS_REQUEST,
-        payload : itemID
     })
 }
 

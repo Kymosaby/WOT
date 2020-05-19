@@ -8,7 +8,7 @@ import Request from "../Request"
 function PinnedSection(props) {
     return (
         !!props.pinnedItems.length && props.pinnedItems.map( (item, index) => {        
-            return (<Request id = { index } item = { item } pinned />)
+            return (<Request id = { index } item = { item }/>)
         })
     )
 }

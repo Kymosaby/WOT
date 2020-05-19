@@ -14,7 +14,7 @@ class UnassignedQueue extends React.Component {
     constructor(props){
         super(props)
         //en este init, pasarle el id de la queue para tenerlo en un mapa de nuestros estados a todas las queue
-        props.queueActions.queueInit( this.props.unassignedItems )
+        props.queueActions.queueInit( this.props.unassignedItems, "unassigned" )
     }
 
     render() {
@@ -22,11 +22,10 @@ class UnassignedQueue extends React.Component {
             <div className = "queueContent">
                 <PinnedSection type = "unassigned" />
                 <QueueGroups 
-                    metaData = {{
-                        // stage : System.schema.request.stage.unassigned,
-                        groupCategory : this.props.activeGroupCategory,
-                    }}
-                /> )} 
+                    groupCategory = {this.props.activeGroupCategory}
+                    queueGroups = {this.props.queueGroups}
+                    queueItems = {this.props.unassignedItems}            
+                />  
             </div> 
         ) 
     }
@@ -44,7 +43,9 @@ function mapStateToProps (store) {
             req.stage === requestNameSpace.stage.unassigned
         )),
         // searchTags : store.queueReducer.searchTags, //map
-        activeGroupCategory : store.queueReducer.activeGroupCategory
+        activeGroupCategory : store.queueReducer.activeGroupCategory,
+        queueGroups : store.queueReducer.groups, //{groupCategory, [groupItems]}
+        queueItems : store.queueReducer.queueItems,
     }
 } 
 

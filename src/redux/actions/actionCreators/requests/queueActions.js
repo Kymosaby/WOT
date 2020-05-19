@@ -4,23 +4,21 @@ import api from "../../../../FakeAPI"
 
 
 //desacoplar el local storage de unassigned con un parametro queue type
-export const queueInit = ( items ) => {
+export const queueInit = ( items, queueType ) => {
     
     let myGroups = api.Requests.groups //[{"cat",[groupitems]}]
     
-    let myPinnedItems = localStorage.getItem("unassignedPinnedItems")
-        ? JSON.parse(localStorage.getItem("unassignedPinnedItems")).map(itemID => {
+    let myPinnedItems = localStorage.getItem(`${queueType}PinnedItems`)
+        ? JSON.parse(localStorage.getItem(`${queueType}PinnedItems`)).map(itemID => {
             return ({
                 itemID : itemID,
                 isGone: items.indexOf(itemID) !== -1 ? false : true
             })
         }): []
     
-    let myItems = items.filter(itemID => myPinnedItems.indexOf(itemID) === -1)
-
     return ({
         type: QueueType.INIT_QUEUE,
-        payload : {myItems, myPinnedItems, myGroups}
+        payload : { items, myPinnedItems, myGroups }
     })
 
 }
@@ -34,14 +32,14 @@ export const setActiveGroupCategory = (group) => {
 }
 
 
-export const pinItem = (itemID) => {
+export const pinItem = (itemID, queueType) => {
     
     //desacoplar el local storage de unassigned con un parametro queue type
-    let myPinnedItems = localStorage.getItem("unassignedPinnedItems")
-        ? JSON.parse(localStorage.getItem("unassignedPinnedItems"))
+    let myPinnedItems = localStorage.getItem(`${queueType}PinnedItems`)
+        ? JSON.parse(localStorage.getItem(`${queueType}PinnedItems`))
         : []
     myPinnedItems.push(itemID)
-    localStorage.setItem("unassignedPinnedItems",JSON.stringify(myPinnedItems))
+    localStorage.setItem(`${queueType}PinnedItems`,JSON.stringify(myPinnedItems))
     
     return ({
         type: QueueType.SET_PINNED_ITEM,
@@ -49,11 +47,11 @@ export const pinItem = (itemID) => {
     })
 }
     
-export const unpinItem = (itemID) => {
+export const unpinItem = (itemID, queueType) => {
 
     //desacoplar el local storage de unassigned con un parametro queue type
-    let myPinnedItems = localStorage.getItem("unassignedPinnedItems")
-        ? JSON.parse(localStorage.getItem("unassignedPinnedItems"))
+    let myPinnedItems = localStorage.getItem(`${queueType}PinnedItems`)
+        ? JSON.parse(localStorage.getItem(`${queueType}PinnedItems`))
         : []
 
     localStorage.setItem("unassignedPinnedItems", JSON.stringify(myPinnedItems.filter( ( item ) => item !== itemID )))
@@ -83,6 +81,22 @@ export const removeSearchTag = (searchCategory) => {
     return ({
         type: QueueType.REMOVE_SEARCH_TAG,
         payload : searchCategory
+    })
+}
+
+export const setItemViewed = (itemID) => {
+
+    console.log("action triggered to set viewed item", itemID)
+    return ({
+        type : QueueType.SET_ITEM_VIEWED,
+        payload : itemID
+    })
+}
+
+export const setItemUniewed = (itemID) => {
+    return ({
+        type : QueueType.SET_ITEM_UNVIEWED,
+        payload : itemID
     })
 }
 

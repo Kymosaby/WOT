@@ -9,6 +9,7 @@ export default class QueueTools extends React.Component {
         this.handleOptionSelect = this.handleOptionSelect.bind(this)
         this.handleSearchAction = this.handleSearchAction.bind(this)
     }
+    
     state = {
         searchValue : "",
         searchTags : [{"":""}],
@@ -72,9 +73,9 @@ export default class QueueTools extends React.Component {
                         <label htmlFor = "options"className= "material-icons dropDown">
                             <input id="options" type="checkbox"></input>
                             <ul className="options">
-                                {this.state.searchCategories.map( category => 
+                                {this.state.searchCategories.map( (category,id) => 
                                     {return( 
-                                        <li className = "option" onClick={this.handleOptionSelect}>
+                                        <li key={category} className = "option" onClick={this.handleOptionSelect}>
                                             <span className= "material-icons">{this.searchCategoriesSchema[category].icon}</span> 
                                             <p>{this.searchCategoriesSchema[category]["description"]}</p>
                                         </li> 
@@ -87,7 +88,7 @@ export default class QueueTools extends React.Component {
                             type="search" 
                             className = "tools__searchBox" 
                             onChange={this.handleSearchInput} 
-                            onSearch={this.handleSearchAction}
+                            // onSearch={this.handleSearchAction}
                             placeholder = {this.searchCategoriesSchema[this.state.activeSearchCategory].placeholder} 
                             value={this.state.searchValue}>
                         </input>    

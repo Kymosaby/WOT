@@ -10,56 +10,57 @@ class Request extends React.Component{
 
     constructor (props){
         super(props)
-        for (let prop in this.props.item){
-            this[prop] = this.props.item[prop] 
-        }
         
+        for (let prop in props.item){
+            this[prop] = props.item[prop];
+        }
+
     } 
-    // metaData = {
-    //     id : this.props.item.id,
-    //     startDate : this.props.item.startDate,
-    //     topic : this.props.item.subject,
-    //     requestor : this.props.item.from,
-    //     workGroup : this.props.item.workGroup,
-    //     scope: {
-    //         assignation : this.props.item.scope.assignation,
-    //         type : this.props.item.scope.type,
-    //     },
-    //     hits : this.props.item.hits
-    // }
+    
+
+    getID =  () =>  {
+        return this.id
+    }
 
     setFocus = (e) => {
-        this.props.unassignedActions.setFocusOnRequest(e.target.metaData.id);
+        
+        console.log("Antes de setear Focus: ", this.props.queueItems.filter((item) => item.id === this.getID())[0])
+        console.log("Variable local de viewed: ", this.viewed)
+        this.props.unassignedActions.setFocusOnRequest(this.getID());
+        !this.viewed && this.props.queueActions.setItemViewed(this.getID());
+        console.log("Antes de setear Focus: ", this.props.queueItems.filter((item) => item.id === this.getID())[0])
+        console.log("Variable local de viewed: ", this.viewed)
+    }
 
+    toggleView = () => {
+        this.setState((prev, props) => {
+            
+            return ({
+
+            })
+        })
     }
 
 
-    handlePinAction = () => {
-          
-       
+    togglePinStatus = (e) => {
+          this.pinned
+            ? this.props.queueActions.pinItem(e.target.id)
+            : this.props.ueueActions.unpinItem(e.target.id)
     }
-
-    // const itemSchema = {}
-    
-    // for (let prop in props.item ) {
-    //     itemSchema[prop] = props.item[prop]
-    // }
 
     render(){  
-
-        
         let start = moment(this.startDate,"YYYY-DD-MM").format("Do MMM - YYYY")
         return ( 
-            <li className="request" onDoubleClick = {this.setFocus}>
+            <li key={this.id} className="request" onDoubleClickCapture = {this.setFocus}>
                 <i 
-                    class={`${this.props.pinned ? "pin--on" : "pin--off"} pin fas fa-thumbtack`}
-                    // onClick = {this.props.togglePinStatus(this.id)}
+                    class={`${this.pinned ? "pin--on" : "pin--off"} pin fas fa-thumbtack`}
+                    onClick = {this.togglePinStatus}
                 ></i>
                 <span className = "id">#{this.id}</span>
                 <span className ="item__source">
-                    <p className="source__topic">{this.topic}</p>
+                    <p className="source__topic">{this.subject}</p>
                     <div className="source__details">
-                        <p className="details__contact">{this.requestor}</p>
+                        <p className="details__contact">{this.from}</p>
                         {this.workGroup && <span  className="details__workGroup">
                             <i className = "workgroup__icon material-icons">work</i>
                             <p className = "workgroup__description">{this.workGroup}</p>
@@ -80,11 +81,11 @@ class Request extends React.Component{
                     <span className = "other__hits">
                         {!!this.hits && (
                             <React.Fragment>
-                            {this.state.viewed && <i className = "material-icons">visibility</i>}
-                            <div className = "hits">
-                                <i className = "material-icons">mail_outline</i>
-                                <i>{this.hits}</i>
-                            </div>
+                                {this.viewed && <i className = "material-icons">visibility</i>}
+                                <div className = "hits">
+                                    <i className = "material-icons">mail_outline</i>
+                                    <i>{this.hits}</i>
+                                </div>
                             </React.Fragment>
                         )}
                     </span>
@@ -94,16 +95,23 @@ class Request extends React.Component{
     }    
 } 
 
-function mapStateToProps(store) {
+function mapStateToProps(store, props) {
+    
     return {
-
+        queueItems : store.queueReducer.queueItems,
+        pinnedItems : store.queueReducer.pinnedItems,
+        focused : store.unassignedReducer.focusedRequest === props.item.id ? true : false ,
+        viewed : store.queueReducer.queueItems.find(item => item.id === props.item.id) 
+            ? store.queueReducer.queueItems.find(item => item.id === props.item.id).viewed 
+            : false 
+        // pinned = props.pinnedItems.indexOf(this.id) === -1 ? false : true;
     }
 }
 
 function mapDispatchToProps(dispatch) {
     return {
         queueActions : bindActionCreators( QueueActions, dispatch ),
-        unassignedActions : bindActionCreators (UnassignedActions, dispatch)
+        unassignedActions : bindActionCreators ( UnassignedActions, dispatch )
     }
 }
 export default connect ( mapStateToProps, mapDispatchToProps ) (Request);

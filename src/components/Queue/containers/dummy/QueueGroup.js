@@ -17,8 +17,8 @@ export default function QueueGroup( props ) {
                 </div>
 
                 <ul className = "group__items">
-                    {props.items.map( ( item , index ) => {
-                        return (<Request id = { index } item = { item } />)
+                    {props.items.map( ( item ) => {
+                        return (<Request item = { item } viewed = {} />)
                     })}
                 </ul>
             </div>

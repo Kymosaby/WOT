@@ -1,7 +1,7 @@
 import * as unassignedTypes from '../../actions/actionTypes/requests/unassignedTypes'
 
 const INITIAL_STATE = {
-    focusedRequest : 0,
+    focusedRequest : false,
     activeFilters : new Map(), //schema : filterCategory <string> : filteredValues <stringArray>  
     filters : [] 
 }
@@ -21,7 +21,7 @@ const unassignedReducer = (state = INITIAL_STATE, action) => {
 
             return{
                 ...state,
-                focusedRequest : action.payload
+                focusedRequest : false
             }
 
 
@@ -34,7 +34,8 @@ const unassignedReducer = (state = INITIAL_STATE, action) => {
             
         case unassignedTypes.SET_FILTER:            
             
-            return {
+        
+        return {
                 ...state,
                 activeFilters : state.activeFilters.set(
                     action.payload[0], 
